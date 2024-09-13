@@ -37,6 +37,14 @@ export function app(): express.Express {
             Return as json as an array in the format ['fact 1', 'fact 2'].`;
 
         const resp = await generativeModel.generateContent(prompt);
+
+        console.log(JSON.stringify({
+            severity: 'DEBUG',
+            message: 'Content is generated',
+            prompt: prompt,
+            response: resp.response,
+        }));
+
         let factArray = '';
 
         if (resp.response.candidates) {
